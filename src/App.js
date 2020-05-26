@@ -12,7 +12,7 @@ import { CHOICES, getRoundOutcome } from "./utils"
 
 
 function App() {
-  let [prompt, setGamePrompt] = useState("1,2,3 please click 1 of 3 buttons");
+  let [prompt, setGamePrompt] = useState("Please click 1 of 3 buttons below");
 
   let [playerChoice, setPlayerChoice] = useState(null);
   let [compChoice, setComputerChoice] = useState(null);
@@ -21,6 +21,10 @@ function App() {
 
 
   const [previousWinner, setPreviousWinner] = useState(null);//ms 5A
+
+  const [startGame, setStartGame] = useState(false);
+
+  
 
 
   const onPlayerChoose = playerChoice => {
@@ -49,11 +53,13 @@ function App() {
     setGameHistory(gameHistory);//ms6 D
   };
 
-  let className = previousWinner === "You" ? "winner-status ": "loser-status";
-  if (!previousWinner || previousWinner === "Tie") className = "";
+  let gameStatus = previousWinner === "You" ? "winner-status " : "loser-status";
+  if (!previousWinner || previousWinner === "Tie") gameStatus = "";
 
-/*   let className = (previousWinner === "You") ? "winner-status"
-                : (previousWinner === "Computer") ? "loser-status" : ""; */
+  /*   let gameStatus = (previousWinner === "You") ? "winner-status"
+                  : (previousWinner === "Computer") ? "loser-status" : ""; */
+
+  //let userName = prompt("what's your name?")                
 
   return (
     <div className="App">
@@ -67,18 +73,21 @@ function App() {
               imgURL={compChoice && compChoice.url} />
 
 
-            <h1 className={className}>{prompt}</h1>
-
+            <h1 className={gameStatus}>{prompt}</h1>
+            <ChoiceButtons disabledButton={startGame} onPlayerChoose={onPlayerChoose} />
 
             <ChoiceCard title="You" previousWinner={previousWinner} imgURL={playerChoice && playerChoice.url} />
 
             <div className="container">
-              <ChoiceButtons onPlayerChoose={onPlayerChoose} />
+          
             </div>
 
           </div>
 
           <div className="col-md-4 themed-grid-col">
+
+            <button className="btn btn-primary" onClick={() => setStartGame(!startGame)}>Start</button>
+
             <h3>History</h3>
             <ul>
               {gameHistory.map((result, index) => {
