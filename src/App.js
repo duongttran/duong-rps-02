@@ -24,6 +24,7 @@ function App() {
 
   const [startGame, setStartGame] = useState(false);
 
+ 
   
 
 
@@ -85,15 +86,17 @@ function App() {
           </div>
 
           <div className="col-md-4 themed-grid-col">
+    <h3>Press "Start" button to play the game</h3>
+            <button className="btn btn-info btn-lg" onClick={() => setStartGame(!startGame)}>Start</button>
 
-            <button className="btn btn-primary" onClick={() => setStartGame(!startGame)}>Start</button>
+    
 
             <h3>History</h3>
-            <ul>
+            <ol>
               {gameHistory.map((result, index) => {
                 return <li key={`history${index}`}>{result}</li>;
               })}
-            </ul>
+            </ol>
           </div>
         </div>
       </div>

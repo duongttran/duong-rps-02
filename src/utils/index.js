@@ -1,6 +1,7 @@
 export const CHOICES = {
     scissors: {
       name: "scissors",
+      //url: "http://getdrawings.com/image/scissor-drawing-62.jpg"
       url: "https://freesvg.org/img/1423835245.png"
     },
     paper: {
