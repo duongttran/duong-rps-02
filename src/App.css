@@ -7,26 +7,25 @@
 }
 
 div {
-  font-family: 'Chelsea Market', cursive;
+  font-family: 'Chelsea Market', sans-serif;
 }
 
 .choice-card {
   flex: 1;
   display: flex;
   margin: 25px;
-  font-size: 3em;
+
   padding: 0 40px;
-  font-weight: 300;
+
   text-align: center;
   border-radius: 25px;
   align-items: center;
   flex-direction: column;
   
   background-color: white;
-  justify-content: space-around;
- 
+
   border: 10px solid black;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
 }
 
 img {
@@ -54,6 +53,7 @@ h3 {
 
 button {
   margin: 15px;
+  text-transform: uppercase;
 }
 
 ul {
@@ -61,15 +61,35 @@ ul {
 }
 
 .winner-status {
-  color:  rgb(89, 167, 0);
-
+  color: rgb(89, 167, 0);
 }
 
 .loser-status {
   color: rgb(206, 0, 0);
 }
 
+ol {
+  list-style: none;
+  counter-reset: round;
+}
+
+ol li {
+  counter-increment: round;
+}
+
+ol li::before {
+  content: "Round " counter(round) ": " ;
+  color: #17a2b8;
+  font-weight: bold;
+}
+
 li {
   text-align: left;
-  margin-left: 40px;
+  margin-left: 20px;
+  font-size: 18px;
 }
+
+.col-md-4 button {
+  margin-top: 30px;
+}
+

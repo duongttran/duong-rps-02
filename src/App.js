@@ -12,20 +12,22 @@ import { CHOICES, getRoundOutcome } from "./utils"
 
 
 function App() {
-  let [prompt, setGamePrompt] = useState("Please click 1 of 3 buttons below");
+  let [prompt, setGamePrompt] = useState('Press "Play" & click 1 of 3 buttons below');
 
   let [playerChoice, setPlayerChoice] = useState(null);
   let [compChoice, setComputerChoice] = useState(null);
-
-  const [gameHistory, setGameHistory] = useState([]); //ms6 B
-
 
   const [previousWinner, setPreviousWinner] = useState(null);//ms 5A
 
   const [startGame, setStartGame] = useState(false);
 
- 
-  
+  let [gameHistory, setGameHistory] = useState([]); //ms6 B
+
+  let resetGame = () => {
+    window.location.reload(true);
+    gameHistory = [];
+    setGameHistory(gameHistory);
+  }
 
 
   const onPlayerChoose = playerChoice => {
@@ -37,7 +39,6 @@ function App() {
     const newComputerChoice = CHOICES[compChoice];
     setComputerChoice(newComputerChoice);
     setPlayerChoice(newUserChoice);
-
 
 
     //Milestone 5B
@@ -67,37 +68,39 @@ function App() {
       <div className="container">
         <div className="row mb-3">
 
-          <div className="col-md-8 themed-grid-col">
+          <div className="col-md-8">
 
             <ChoiceCard title="Computer"
               previousWinner={previousWinner}
               imgURL={compChoice && compChoice.url} />
 
+            <h2 className={gameStatus}>{prompt}</h2>
 
-            <h1 className={gameStatus}>{prompt}</h1>
             <ChoiceButtons disabledButton={startGame} onPlayerChoose={onPlayerChoose} />
 
             <ChoiceCard title="You" previousWinner={previousWinner} imgURL={playerChoice && playerChoice.url} />
 
             <div className="container">
-          
+
             </div>
 
           </div>
 
-          <div className="col-md-4 themed-grid-col">
-    <h3>Press "Start" button to play the game</h3>
-            <button className="btn btn-info btn-lg" onClick={() => setStartGame(!startGame)}>Start</button>
+          <div className="col-md-4">
 
-    
+            <button className="btn btn-info btn-lg" onClick={() => setStartGame(!startGame)}>Play <i class="fas fa-play"></i></button>
+            <button className="btn btn-warning btn-lg" onClick={() => resetGame()}>Reset <i class="fas fa-undo-alt"></i></button>
 
             <h3>History</h3>
+
             <ol>
               {gameHistory.map((result, index) => {
                 return <li key={`history${index}`}>{result}</li>;
               })}
             </ol>
           </div>
+
+
         </div>
       </div>
 

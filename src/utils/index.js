@@ -17,8 +17,6 @@ export const CHOICES = {
   
   
   
-  
-  
   export const getRandomChoice = () => {
     let choiceNames = Object.keys(CHOICES);
     let randomIndex = Math.floor(Math.random() * 3);

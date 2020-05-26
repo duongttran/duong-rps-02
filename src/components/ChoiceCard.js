@@ -6,7 +6,7 @@ export default function ChoiceCard(props) {
 
     const won = props.title === props.previousWinner;
     let className;
-    
+
     const hasPreviousGame =
       props.previousWinner === "Computer" || props.previousWinner === "You";
 
@@ -24,7 +24,7 @@ export default function ChoiceCard(props) {
     } else if (props.previousWinner === null) {
       prompt = "Start";
     } else {
-      prompt = "Lose";
+      prompt = "Lost";
     }
   
     return (

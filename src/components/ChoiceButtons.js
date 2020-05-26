@@ -5,15 +5,15 @@ export default function ChoiceButtons(props) {
     <div className="container">
       <button  className="btn btn-dark btn-lg" disabled={!props.disabledButton}
         onClick={() => props.onPlayerChoose("rock")}>
-        Rock
+        Rock <i class="fas fa-hand-rock"></i>
       </button>
       <button  className="btn btn-dark btn-lg" disabled={!props.disabledButton}
         onClick={() => props.onPlayerChoose("paper")}>
-        Paper
+        Paper <i class="fas fa-hand-paper"></i>
       </button>
       <button  className="btn btn-dark btn-lg" disabled={!props.disabledButton}
         onClick={() => props.onPlayerChoose("scissors")}>
-        Scissors
+        Scissors <i class="fas fa-hand-scissors"></i>
       </button>
     </div>
   );
