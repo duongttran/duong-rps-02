@@ -50,3 +50,12 @@ button {
 ul {
   list-style: none;
 }
+
+.winner-status {
+  color: green;
+
+}
+
+.loser-status {
+  color: red;
+}

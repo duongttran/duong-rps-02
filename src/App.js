@@ -47,16 +47,19 @@ function App() {
     setGamePrompt(result);//ms6 A
     gameHistory.push(result);//ms6 C
     setGameHistory(gameHistory);//ms6 D
-
-
   };
 
+  let className = previousWinner === "You" ? "winner-status ": "loser-status";
+  if (!previousWinner || previousWinner === "Tie") className = "";
 
+/*   let className = (previousWinner === "You") ? "winner-status"
+                : (previousWinner === "Computer") ? "loser-status" : ""; */
 
   return (
     <div className="App">
       <div className="container">
         <div className="row mb-3">
+
           <div className="col-md-8 themed-grid-col">
 
             <ChoiceCard title="Computer"
@@ -64,15 +67,14 @@ function App() {
               imgURL={compChoice && compChoice.url} />
 
 
-            <h1>{prompt}</h1>
-            <div className="container">
-              <ChoiceButtons onPlayerChoose={onPlayerChoose} />
-              
-
-            </div>
+            <h1 className={className}>{prompt}</h1>
 
 
             <ChoiceCard title="You" previousWinner={previousWinner} imgURL={playerChoice && playerChoice.url} />
+
+            <div className="container">
+              <ChoiceButtons onPlayerChoose={onPlayerChoose} />
+            </div>
 
           </div>
 
