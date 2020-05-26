@@ -69,46 +69,29 @@ function App() {
     <div className="App">
       <div className="container">
         <div className="row mb-3">
-
+    
+          <div className="col-md-8">
+            <ChoiceCard title="Computer"
+              previousWinner={previousWinner}
+              imgURL={compChoice && compChoice.url} />
+            <h2 className={gameStatus}>{prompt}</h2>
+            <ChoiceButtons disabledButton={startGame} onPlayerChoose={onPlayerChoose} />
+            <ChoiceCard title="You" previousWinner={previousWinner} imgURL={playerChoice && playerChoice.url} />
+          </div>
+    
           <div className="col-md-4">
-
             <button className="btn btn-info btn-lg" onClick={() => setStartGame(!startGame)}>Play <i class="fas fa-play"></i></button>
             <button className="btn btn-warning btn-lg" onClick={() => resetGame()}>Reset <i class="fas fa-undo-alt"></i></button>
-
             <h3>History</h3>
-
             <ol>
               {gameHistory.map((result, index) => {
                 return <li key={`history${index}`}>{result}</li>;
               })}
             </ol>
           </div>
-          
-          <div className="col-md-8">
-
-            <ChoiceCard title="Computer"
-              previousWinner={previousWinner}
-              imgURL={compChoice && compChoice.url} />
-
-            <h2 className={gameStatus}>{prompt}</h2>
-
-            <ChoiceButtons disabledButton={startGame} onPlayerChoose={onPlayerChoose} />
-
-            <ChoiceCard title="You" previousWinner={previousWinner} imgURL={playerChoice && playerChoice.url} />
-
-            <div className="container">
-
-            </div>
-
-          </div>
-
-
-
 
         </div>
       </div>
-
-
     </div>
   );
 
