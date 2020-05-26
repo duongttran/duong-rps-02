@@ -23,6 +23,8 @@ function App() {
 
   let [gameHistory, setGameHistory] = useState([]); //ms6 B
 
+
+
   let resetGame = () => {
     window.location.reload(true);
     gameHistory = [];
@@ -68,6 +70,20 @@ function App() {
       <div className="container">
         <div className="row mb-3">
 
+          <div className="col-md-4">
+
+            <button className="btn btn-info btn-lg" onClick={() => setStartGame(!startGame)}>Play <i class="fas fa-play"></i></button>
+            <button className="btn btn-warning btn-lg" onClick={() => resetGame()}>Reset <i class="fas fa-undo-alt"></i></button>
+
+            <h3>History</h3>
+
+            <ol>
+              {gameHistory.map((result, index) => {
+                return <li key={`history${index}`}>{result}</li>;
+              })}
+            </ol>
+          </div>
+          
           <div className="col-md-8">
 
             <ChoiceCard title="Computer"
@@ -86,19 +102,7 @@ function App() {
 
           </div>
 
-          <div className="col-md-4">
 
-            <button className="btn btn-info btn-lg" onClick={() => setStartGame(!startGame)}>Play <i class="fas fa-play"></i></button>
-            <button className="btn btn-warning btn-lg" onClick={() => resetGame()}>Reset <i class="fas fa-undo-alt"></i></button>
-
-            <h3>History</h3>
-
-            <ol>
-              {gameHistory.map((result, index) => {
-                return <li key={`history${index}`}>{result}</li>;
-              })}
-            </ol>
-          </div>
 
 
         </div>
